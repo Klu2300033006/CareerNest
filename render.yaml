@@ -33,6 +33,7 @@ services:
     name: careernest-frontend
     runtime: static
     rootDir: frontend
+    staticPublishPath: .
     headers:
       - path: /*
         name: Cache-Control
