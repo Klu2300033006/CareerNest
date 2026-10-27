@@ -6,7 +6,7 @@
 // Auto-detect: use deployed backend on Render, or localhost for dev
 const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:8000/api'
-    : 'https://careernest-backend.onrender.com/api';
+    : 'https://careernest-backend-y6nh.onrender.com/api';
 
 const api = {
     getToken() {
