@@ -14,9 +14,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ──────────────────────────────────────────────
 # Security
 # ──────────────────────────────────────────────
-SECRET_KEY = 'django-insecure-careernest-dev-key-change-in-production-x9$m2k'
-DEBUG = True
-ALLOWED_HOSTS = ['*']
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY',
+    'django-insecure-careernest-dev-key-change-in-production-x9$m2k'
+)
+DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 'yes')
+
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # ──────────────────────────────────────────────
 # Application definition
@@ -43,6 +51,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -72,28 +81,26 @@ TEMPLATES = [
 WSGI_APPLICATION = 'careernest.wsgi.application'
 
 # ──────────────────────────────────────────────
-# Database — SQLite (for development)
-# To use PostgreSQL, comment out the SQLite block
-# and uncomment the PostgreSQL block below.
+# Database
 # ──────────────────────────────────────────────
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+import dj_database_url
 
-# PostgreSQL config (uncomment when ready):
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'careernest_db',
-#         'USER': 'postgres',
-#         'PASSWORD': 'your_password_here',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=DATABASE_URL,
+            conn_max_age=600,
+            conn_health_checks=True,
+        )
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # ──────────────────────────────────────────────
 # Custom user model
@@ -123,6 +130,11 @@ USE_TZ = True
 # ──────────────────────────────────────────────
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STORAGES = {
+    'staticfiles': {
+        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+    },
+}
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -160,7 +172,12 @@ SIMPLE_JWT = {
 # ──────────────────────────────────────────────
 # CORS
 # ──────────────────────────────────────────────
-CORS_ALLOW_ALL_ORIGINS = True  # Dev only — restrict in production
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r'^https://.*\.onrender\.com$',
+    r'^http://localhost:\d+$',
+    r'^http://127\.0\.0\.1:\d+$',
+]
+CORS_ALLOW_ALL_ORIGINS = DEBUG  # Only in dev
 
 # ──────────────────────────────────────────────
 # Default primary key field type
