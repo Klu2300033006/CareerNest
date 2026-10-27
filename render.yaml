@@ -32,7 +32,6 @@ services:
   - type: web
     name: careernest-frontend
     runtime: static
-    plan: free
     rootDir: frontend
     headers:
       - path: /*
