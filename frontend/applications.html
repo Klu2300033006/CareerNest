@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Applications — CareerNest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/applications.css">
+</head>
+<body>
+    <nav class="navbar scrolled">
+        <div class="navbar-inner">
+            <a href="index.html" class="navbar-logo"><span class="logo-icon">🪺</span> CareerNest</a>
+            <div class="navbar-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="applications.html" class="active">Applications</a>
+            </div>
+            <div class="navbar-actions">
+                <button class="btn btn-icon theme-toggle">🌙</button>
+                <div class="dropdown">
+                    <button class="avatar profile-trigger"><span class="user-avatar-text">?</span></button>
+                    <div class="dropdown-menu profile-dropdown">
+                        <div style="padding:12px 14px;border-bottom:1px solid var(--border-color);">
+                            <div class="font-semibold text-sm user-name">User</div>
+                            <div class="text-xs text-muted user-email"></div>
+                        </div>
+                        <a href="dashboard.html" class="dropdown-item">📊 Dashboard</a>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item" id="logout-btn">🚪 Sign Out</button>
+                    </div>
+                </div>
+                <button class="menu-toggle" onclick="document.getElementById('nav-links').classList.toggle('mobile-open');this.classList.toggle('active');"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-content">
+        <div class="container" style="padding-top: var(--space-8); padding-bottom: var(--space-12);">
+            <div style="margin-bottom: var(--space-6);">
+                <h1 style="font-size: var(--text-3xl); margin-bottom: var(--space-2);">My Applications</h1>
+                <p class="text-secondary">Track and manage all your job applications in one place.</p>
+            </div>
+
+            <div class="applications-toolbar">
+                <div class="status-filters">
+                    <button class="status-filter-btn active" data-status="all">All</button>
+                    <button class="status-filter-btn" data-status="pending">⏳ Pending</button>
+                    <button class="status-filter-btn" data-status="reviewed">👀 Reviewed</button>
+                    <button class="status-filter-btn" data-status="accepted">✅ Accepted</button>
+                    <button class="status-filter-btn" data-status="rejected">❌ Rejected</button>
+                </div>
+                <div class="view-toggle">
+                    <button class="view-toggle-btn active" data-view="cards">☷ Cards</button>
+                    <button class="view-toggle-btn" data-view="timeline">⊟ Timeline</button>
+                </div>
+            </div>
+
+            <div id="applications-container">
+                <div class="empty-state" style="padding: 60px 20px;">
+                    <div class="empty-state-icon">⏳</div>
+                    <div class="empty-state-title">Loading applications...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/applications.js"></script>
+</body>
+</html>

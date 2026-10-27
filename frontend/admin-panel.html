@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel — CareerNest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <nav class="navbar scrolled">
+        <div class="navbar-inner">
+            <a href="index.html" class="navbar-logo"><span class="logo-icon">🪺</span> CareerNest</a>
+            <div class="navbar-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="admin-panel.html" class="active">Admin</a>
+            </div>
+            <div class="navbar-actions">
+                <button class="btn btn-icon theme-toggle">🌙</button>
+                <div class="dropdown">
+                    <button class="avatar profile-trigger"><span class="user-avatar-text">A</span></button>
+                    <div class="dropdown-menu profile-dropdown">
+                        <div style="padding:12px 14px;border-bottom:1px solid var(--border-color);">
+                            <div class="font-semibold text-sm user-name">Admin</div>
+                            <div class="text-xs text-muted user-email">admin@careernest.com</div>
+                        </div>
+                        <a href="dashboard.html" class="dropdown-item">📊 Dashboard</a>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item" id="logout-btn">🚪 Sign Out</button>
+                    </div>
+                </div>
+                <button class="menu-toggle" onclick="document.getElementById('nav-links').classList.toggle('mobile-open');this.classList.toggle('active');"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Admin</div>
+                    <a href="admin-panel.html" class="sidebar-link active"><span class="link-icon">📊</span> Analytics</a>
+                    <a href="#admin-jobs-section" class="sidebar-link"><span class="link-icon">💼</span> Manage Jobs</a>
+                    <a href="#admin-apps-section" class="sidebar-link"><span class="link-icon">📋</span> Applications</a>
+                </div>
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Navigation</div>
+                    <a href="dashboard.html" class="sidebar-link"><span class="link-icon">🏠</span> User Dashboard</a>
+                    <a href="jobs.html" class="sidebar-link"><span class="link-icon">🔍</span> Browse Jobs</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-8);">
+                <div>
+                    <h1 style="font-size:var(--text-2xl);margin-bottom:var(--space-1);">Admin Dashboard</h1>
+                    <p class="text-muted text-sm">Manage your job portal</p>
+                </div>
+                <button class="btn btn-primary" id="add-job-btn">+ Add New Job</button>
+            </div>
+
+            <!-- Stats -->
+            <div class="admin-stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">💼</div>
+                    <div class="stat-value" id="admin-jobs">0</div>
+                    <div class="stat-label">Total Jobs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">👥</div>
+                    <div class="stat-value" id="admin-users">0</div>
+                    <div class="stat-label">Total Users</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon amber">📋</div>
+                    <div class="stat-value" id="admin-apps">0</div>
+                    <div class="stat-label">Applications</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: var(--color-success-bg);">📈</div>
+                    <div class="stat-value"><span id="admin-rate">0</span>%</div>
+                    <div class="stat-label">Acceptance Rate</div>
+                </div>
+            </div>
+
+            <!-- Jobs Table -->
+            <div class="admin-table-wrap" id="admin-jobs-section" style="margin-bottom:var(--space-8);">
+                <div class="admin-table-header">
+                    <h3>Manage Jobs</h3>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Job Title</th>
+                            <th>Company</th>
+                            <th>Location</th>
+                            <th>Type</th>
+                            <th>Apps</th>
+                            <th>Posted</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-jobs-table">
+                        <tr><td colspan="7" class="text-center p-6">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Applications Table -->
+            <div class="admin-table-wrap" id="admin-apps-section">
+                <div class="admin-table-header">
+                    <h3>Recent Applications</h3>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Applicant</th>
+                            <th>Job</th>
+                            <th>Email</th>
+                            <th>Applied</th>
+                            <th>Status</th>
+                            <th>Resume</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-apps-table">
+                        <tr><td colspan="6" class="text-center p-6">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Job Modal -->
+    <div class="modal-overlay" id="add-job-modal">
+        <div class="modal" style="max-width:640px;">
+            <div class="modal-header">
+                <h3 class="modal-title">Add New Job</h3>
+                <button class="modal-close">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="add-job-form">
+                    <div class="form-group">
+                        <label class="form-label">Job Title</label>
+                        <input type="text" class="form-input" name="title" required>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                        <div class="form-group">
+                            <label class="form-label">Company ID</label>
+                            <input type="number" class="form-input" name="company" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Category ID</label>
+                            <input type="number" class="form-input" name="category">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-input form-textarea" name="description" required></textarea>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                        <div class="form-group">
+                            <label class="form-label">Location</label>
+                            <input type="text" class="form-input" name="location" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Job Type</label>
+                            <select class="form-select" name="job_type">
+                                <option value="full-time">Full Time</option>
+                                <option value="part-time">Part Time</option>
+                                <option value="remote">Remote</option>
+                                <option value="contract">Contract</option>
+                                <option value="internship">Internship</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                        <div class="form-group">
+                            <label class="form-label">Min Salary</label>
+                            <input type="number" class="form-input" name="salary_min">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Max Salary</label>
+                            <input type="number" class="form-input" name="salary_max">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full">Create Job</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

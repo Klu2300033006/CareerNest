@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs — CareerNest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/jobs.css">
+</head>
+<body>
+    <nav class="navbar scrolled">
+        <div class="navbar-inner">
+            <a href="index.html" class="navbar-logo"><span class="logo-icon">🪺</span> CareerNest</a>
+            <div class="navbar-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="jobs.html" class="active">Jobs</a>
+                <a href="dashboard.html" class="auth-only">Dashboard</a>
+                <a href="applications.html" class="auth-only">Applications</a>
+            </div>
+            <div class="navbar-actions">
+                <button class="btn btn-icon theme-toggle">🌙</button>
+                <a href="login.html" class="btn btn-ghost guest-only">Sign In</a>
+                <a href="register.html" class="btn btn-primary btn-sm guest-only">Get Started</a>
+                <div class="dropdown auth-only">
+                    <button class="avatar profile-trigger"><span class="user-avatar-text">?</span></button>
+                    <div class="dropdown-menu profile-dropdown">
+                        <div style="padding:12px 14px; border-bottom:1px solid var(--border-color);">
+                            <div class="font-semibold text-sm user-name">User</div>
+                            <div class="text-xs text-muted user-email"></div>
+                        </div>
+                        <a href="dashboard.html" class="dropdown-item">📊 Dashboard</a>
+                        <a href="applications.html" class="dropdown-item">📋 Applications</a>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item" id="logout-btn">🚪 Sign Out</button>
+                    </div>
+                </div>
+                <button class="menu-toggle" onclick="document.getElementById('nav-links').classList.toggle('mobile-open');this.classList.toggle('active');"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-content">
+        <div class="container" style="padding-top: var(--space-8); padding-bottom: var(--space-12);">
+            <!-- Page Header -->
+            <div style="margin-bottom: var(--space-6);">
+                <h1 style="font-size: var(--text-3xl); margin-bottom: var(--space-2);">Find Your Next Role</h1>
+                <p class="text-secondary" id="result-count">Loading jobs...</p>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="jobs-toolbar">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="job-search" placeholder="Search jobs by title, company, or skill...">
+                </div>
+            </div>
+
+            <div class="jobs-layout">
+                <!-- Filters -->
+                <aside class="filter-panel">
+                    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: var(--space-5);">
+                        <h3 style="font-size: var(--text-base); font-weight: 600;">Filters</h3>
+                        <button class="btn btn-ghost btn-sm" id="clear-filters">Clear</button>
+                    </div>
+
+                    <div class="filter-section">
+                        <div class="filter-title">Job Type</div>
+                        <div class="filter-options">
+                            <label class="checkbox-label"><input type="checkbox" name="job_type" value="full-time"> Full Time</label>
+                            <label class="checkbox-label"><input type="checkbox" name="job_type" value="part-time"> Part Time</label>
+                            <label class="checkbox-label"><input type="checkbox" name="job_type" value="remote"> Remote</label>
+                            <label class="checkbox-label"><input type="checkbox" name="job_type" value="contract"> Contract</label>
+                            <label class="checkbox-label"><input type="checkbox" name="job_type" value="internship"> Internship</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <div class="filter-title">Location</div>
+                        <input type="text" class="form-input" id="filter-location" placeholder="City or state..." style="padding:10px 12px; font-size: 13px;">
+                    </div>
+
+                    <div class="filter-section">
+                        <div class="filter-title">Salary Range ($)</div>
+                        <div class="filter-range">
+                            <input type="number" id="filter-salary-min" placeholder="Min">
+                            <span>—</span>
+                            <input type="number" id="filter-salary-max" placeholder="Max">
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Job Cards -->
+                <div>
+                    <div class="jobs-grid" id="jobs-grid">
+                        <!-- Populated by JS -->
+                    </div>
+                    <div id="pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/jobs.js"></script>
+</body>
+</html>

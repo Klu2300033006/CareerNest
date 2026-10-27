@@ -1,0 +1,223 @@
+/* ═══════════════════════════════════════════════════════
+   CareerNest — Design Tokens & CSS Custom Properties
+   ═══════════════════════════════════════════════════════
+   A carefully curated set of design tokens that power
+   the entire visual system. Every color, shadow, and
+   spacing value flows from these variables.
+   ═══════════════════════════════════════════════════════ */
+
+:root {
+    /* ── Color Palette ── */
+    --color-navy-900: #070e1a;
+    --color-navy-800: #0a1628;
+    --color-navy-700: #0f2035;
+    --color-navy-600: #162d4a;
+    --color-navy-500: #1e3a5f;
+
+    --color-blue-600: #1d4ed8;
+    --color-blue-500: #2563eb;
+    --color-blue-400: #3b82f6;
+    --color-blue-300: #60a5fa;
+    --color-blue-200: #93c5fd;
+    --color-blue-100: #dbeafe;
+    --color-blue-50:  #eff6ff;
+
+    --color-indigo-600: #4f46e5;
+    --color-indigo-500: #6366f1;
+    --color-indigo-400: #818cf8;
+
+    --color-cyan-500: #06b6d4;
+    --color-cyan-400: #22d3ee;
+
+    --color-green-500: #22c55e;
+    --color-green-400: #4ade80;
+    --color-green-100: #dcfce7;
+
+    --color-amber-500: #f59e0b;
+    --color-amber-400: #fbbf24;
+    --color-amber-100: #fef3c7;
+
+    --color-red-500: #ef4444;
+    --color-red-400: #f87171;
+    --color-red-100: #fee2e2;
+
+    --color-gray-900: #111827;
+    --color-gray-800: #1f2937;
+    --color-gray-700: #374151;
+    --color-gray-600: #4b5563;
+    --color-gray-500: #6b7280;
+    --color-gray-400: #9ca3af;
+    --color-gray-300: #d1d5db;
+    --color-gray-200: #e5e7eb;
+    --color-gray-100: #f3f4f6;
+    --color-gray-50:  #f9fafb;
+
+    --color-white: #ffffff;
+
+    /* ── Semantic Colors ── */
+    --color-primary: var(--color-blue-500);
+    --color-primary-hover: var(--color-blue-600);
+    --color-primary-light: var(--color-blue-100);
+    --color-secondary: var(--color-indigo-500);
+    --color-accent: var(--color-cyan-500);
+
+    --color-success: var(--color-green-500);
+    --color-success-bg: var(--color-green-100);
+    --color-warning: var(--color-amber-500);
+    --color-warning-bg: var(--color-amber-100);
+    --color-danger: var(--color-red-500);
+    --color-danger-bg: var(--color-red-100);
+
+    /* ── Surface Colors (Light Mode) ── */
+    --surface-body: var(--color-gray-50);
+    --surface-card: var(--color-white);
+    --surface-elevated: var(--color-white);
+    --surface-overlay: rgba(0, 0, 0, 0.45);
+    --surface-glass: rgba(255, 255, 255, 0.72);
+    --surface-glass-border: rgba(255, 255, 255, 0.25);
+
+    /* ── Text Colors ── */
+    --text-primary: var(--color-gray-900);
+    --text-secondary: var(--color-gray-600);
+    --text-muted: var(--color-gray-400);
+    --text-inverse: var(--color-white);
+    --text-link: var(--color-blue-500);
+
+    /* ── Border ── */
+    --border-color: var(--color-gray-200);
+    --border-light: var(--color-gray-100);
+
+    /* ── Gradients ── */
+    --gradient-primary: linear-gradient(135deg, var(--color-blue-500) 0%, var(--color-indigo-500) 100%);
+    --gradient-hero: linear-gradient(135deg, var(--color-navy-800) 0%, var(--color-navy-600) 50%, #1a365d 100%);
+    --gradient-card-hover: linear-gradient(135deg, rgba(37, 99, 235, 0.04) 0%, rgba(99, 102, 241, 0.04) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--color-cyan-500), var(--color-blue-500));
+    --gradient-neon: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-glow: 0 0 20px rgba(37, 99, 235, 0.15);
+
+    /* ── Shadows (Elevation System) ── */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    --shadow-glow-blue: 0 0 25px rgba(37, 99, 235, 0.2);
+    --shadow-glow-indigo: 0 0 25px rgba(99, 102, 241, 0.2);
+    --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    /* ── Spacing Scale (based on 4px) ── */
+    --space-1: 0.25rem;   /* 4px */
+    --space-2: 0.5rem;    /* 8px */
+    --space-3: 0.75rem;   /* 12px */
+    --space-4: 1rem;      /* 16px */
+    --space-5: 1.25rem;   /* 20px */
+    --space-6: 1.5rem;    /* 24px */
+    --space-8: 2rem;      /* 32px */
+    --space-10: 2.5rem;   /* 40px */
+    --space-12: 3rem;     /* 48px */
+    --space-16: 4rem;     /* 64px */
+    --space-20: 5rem;     /* 80px */
+    --space-24: 6rem;     /* 96px */
+
+    /* ── Typography ── */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+    --text-xs: 0.75rem;     /* 12px */
+    --text-sm: 0.875rem;    /* 14px */
+    --text-base: 1rem;      /* 16px */
+    --text-lg: 1.125rem;    /* 18px */
+    --text-xl: 1.25rem;     /* 20px */
+    --text-2xl: 1.5rem;     /* 24px */
+    --text-3xl: 1.875rem;   /* 30px */
+    --text-4xl: 2.25rem;    /* 36px */
+    --text-5xl: 3rem;       /* 48px */
+    --text-6xl: 3.75rem;    /* 60px */
+
+    --leading-tight: 1.25;
+    --leading-snug: 1.375;
+    --leading-normal: 1.6;
+    --leading-relaxed: 1.75;
+
+    --weight-normal: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+    --weight-extrabold: 800;
+
+    /* ── Border Radius ── */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-2xl: 24px;
+    --radius-pill: 50px;
+    --radius-full: 50%;
+
+    /* ── Transitions ── */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --duration-fast: 150ms;
+    --duration-normal: 250ms;
+    --duration-slow: 400ms;
+    --duration-slower: 600ms;
+
+    /* ── Z-Index Scale ── */
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-overlay: 300;
+    --z-modal: 400;
+    --z-toast: 500;
+
+    /* ── Glassmorphism ── */
+    --glass-bg: rgba(255, 255, 255, 0.72);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.25);
+    --glass-blur: blur(16px);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+
+    /* ── Navbar ── */
+    --navbar-height: 72px;
+
+    /* ── Sidebar ── */
+    --sidebar-width: 260px;
+    --sidebar-collapsed: 72px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Dark Mode Overrides
+   ═══════════════════════════════════════════════════════ */
+
+[data-theme="dark"] {
+    --surface-body: var(--color-navy-900);
+    --surface-card: rgba(15, 32, 53, 0.9);
+    --surface-elevated: var(--color-navy-700);
+    --surface-overlay: rgba(0, 0, 0, 0.6);
+    --surface-glass: rgba(15, 32, 53, 0.8);
+    --surface-glass-border: rgba(255, 255, 255, 0.08);
+
+    --text-primary: var(--color-gray-100);
+    --text-secondary: var(--color-gray-400);
+    --text-muted: var(--color-gray-500);
+
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-light: rgba(255, 255, 255, 0.04);
+
+    --glass-bg: rgba(15, 32, 53, 0.8);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.35);
+    --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+
+    --gradient-card-hover: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(99, 102, 241, 0.08) 100%);
+    
+    --color-success-bg: rgba(34, 197, 94, 0.15);
+    --color-warning-bg: rgba(245, 158, 11, 0.15);
+    --color-danger-bg: rgba(239, 68, 68, 0.15);
+}

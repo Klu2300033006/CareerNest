@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign in to your CareerNest account to manage your job applications.">
+    <title>Login — CareerNest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+    <div class="auth-page">
+        <div class="auth-decor">
+            <div class="auth-decor-content">
+                <h2>Welcome Back!</h2>
+                <p>Sign in to continue your job search and manage your applications.</p>
+                <ul class="auth-decor-features">
+                    <li><span class="check-icon">✓</span> Track all your applications in one place</li>
+                    <li><span class="check-icon">✓</span> Get personalized job recommendations</li>
+                    <li><span class="check-icon">✓</span> Save and bookmark favorite jobs</li>
+                    <li><span class="check-icon">✓</span> Receive status updates instantly</li>
+                </ul>
+            </div>
+        </div>
+        <div class="auth-form-section">
+            <div class="auth-card">
+                <div class="auth-card-header">
+                    <a href="index.html" class="auth-logo">
+                        <span class="logo-icon">🪺</span>
+                        CareerNest
+                    </a>
+                    <h1>Sign in to your account</h1>
+                    <p>Enter your credentials to continue</p>
+                </div>
+                <div class="auth-alert" id="login-alert"></div>
+                <form class="auth-form" id="login-form">
+                    <div class="form-group">
+                        <label class="form-label" for="login-email">Email Address</label>
+                        <input type="email" class="form-input" id="login-email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="login-password">Password</label>
+                        <input type="password" class="form-input" id="login-password" placeholder="Enter your password" required>
+                    </div>
+                    <div class="form-row">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="remember-me"> Remember me
+                        </label>
+                        <a href="#">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary auth-submit">Sign In</button>
+                </form>
+                <div class="auth-divider">or continue with</div>
+                <div class="social-login">
+                    <button class="social-btn">🔵 Google</button>
+                    <button class="social-btn">⚫ GitHub</button>
+                </div>
+                <div class="auth-footer">
+                    Don't have an account? <a href="register.html">Create one</a>
+                </div>
+                <div style="margin-top: 16px; padding: 12px; background: var(--color-primary-light); border-radius: var(--radius-md); font-size: 12px; color: var(--text-secondary);">
+                    <strong>Demo Accounts:</strong><br>
+                    User: demo@careernest.com / demo1234<br>
+                    Admin: admin@careernest.com / admin1234
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

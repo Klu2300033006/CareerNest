@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Detail — CareerNest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/jobs.css">
+</head>
+<body>
+    <nav class="navbar scrolled">
+        <div class="navbar-inner">
+            <a href="index.html" class="navbar-logo"><span class="logo-icon">🪺</span> CareerNest</a>
+            <div class="navbar-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="jobs.html" class="active">Jobs</a>
+                <a href="dashboard.html" class="auth-only">Dashboard</a>
+                <a href="applications.html" class="auth-only">Applications</a>
+            </div>
+            <div class="navbar-actions">
+                <button class="btn btn-icon theme-toggle">🌙</button>
+                <a href="login.html" class="btn btn-ghost guest-only">Sign In</a>
+                <div class="dropdown auth-only">
+                    <button class="avatar profile-trigger"><span class="user-avatar-text">?</span></button>
+                    <div class="dropdown-menu profile-dropdown">
+                        <div style="padding:12px 14px;border-bottom:1px solid var(--border-color);">
+                            <div class="font-semibold text-sm user-name">User</div>
+                            <div class="text-xs text-muted user-email"></div>
+                        </div>
+                        <a href="dashboard.html" class="dropdown-item">📊 Dashboard</a>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item" id="logout-btn">🚪 Sign Out</button>
+                    </div>
+                </div>
+                <button class="menu-toggle" onclick="document.getElementById('nav-links').classList.toggle('mobile-open');this.classList.toggle('active');"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-content">
+        <div class="container" id="job-detail-container" style="padding-top: var(--space-8); padding-bottom: var(--space-12);">
+            <!-- Back link -->
+            <a href="jobs.html" style="display:inline-flex;align-items:center;gap:8px;margin-bottom:var(--space-6);font-size:var(--text-sm);color:var(--text-muted);">← Back to Jobs</a>
+
+            <!-- Job Header -->
+            <div class="job-detail-header">
+                <div class="job-detail-logo" id="jd-logo">?</div>
+                <div>
+                    <h1 class="job-detail-title" id="jd-title">Loading...</h1>
+                    <p class="job-detail-company" id="jd-company"></p>
+                    <div class="job-detail-badges" id="jd-badges"></div>
+                </div>
+            </div>
+
+            <div class="job-detail-layout">
+                <!-- Main Content -->
+                <div>
+                    <div class="job-detail-content">
+                        <div class="tabs">
+                            <button class="tab active" data-tab="tab-description">Description</button>
+                            <button class="tab" data-tab="tab-requirements">Requirements</button>
+                            <button class="tab" data-tab="tab-responsibilities">Responsibilities</button>
+                        </div>
+                        <div class="job-detail-body">
+                            <div id="tab-description"><div id="jd-description"></div></div>
+                            <div id="tab-requirements" style="display:none;"><div id="jd-requirements"></div></div>
+                            <div id="tab-responsibilities" style="display:none;"><div id="jd-responsibilities"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Apply Form -->
+                    <div class="job-detail-content" style="margin-top: var(--space-6);" id="apply-section">
+                        <div style="padding: var(--space-6);">
+                            <h3 style="margin-bottom: var(--space-5);">Apply for this Position</h3>
+                            <form id="apply-form">
+                                <div class="form-group">
+                                    <label class="form-label">Resume / CV</label>
+                                    <div class="file-upload">
+                                        <input type="file" id="resume-file" accept=".pdf,.doc,.docx">
+                                        <div class="file-upload-icon">📎</div>
+                                        <div class="file-upload-text" id="file-name"><strong>Click to upload</strong> or drag and drop<br>PDF, DOC up to 5MB</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Cover Letter (Optional)</label>
+                                    <textarea class="form-input form-textarea" id="cover-letter" placeholder="Tell the employer why you're a great fit..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-lg w-full">Submit Application</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div>
+                    <div class="job-sidebar-card">
+                        <h4>Job Details</h4>
+                        <div class="job-info-row"><span class="job-info-label">Salary</span><span class="job-info-value" id="jd-salary">—</span></div>
+                        <div class="job-info-row"><span class="job-info-label">Location</span><span class="job-info-value" id="jd-location">—</span></div>
+                        <div class="job-info-row"><span class="job-info-label">Job Type</span><span class="job-info-value" id="jd-type">—</span></div>
+                        <div class="job-info-row"><span class="job-info-label">Experience</span><span class="job-info-value" id="jd-experience">—</span></div>
+                        <div class="job-info-row"><span class="job-info-label">Posted</span><span class="job-info-value" id="jd-posted">—</span></div>
+                        <div class="job-info-row"><span class="job-info-label">Deadline</span><span class="job-info-value" id="jd-deadline">—</span></div>
+                        <div class="job-info-row"><span class="job-info-label">Applicants</span><span class="job-info-value" id="jd-applicants">—</span></div>
+                    </div>
+
+                    <div class="job-sidebar-card" style="margin-top: var(--space-6);">
+                        <h4>About the Company</h4>
+                        <p class="font-semibold" id="jd-comp-name" style="margin-bottom:8px;"></p>
+                        <p class="text-sm text-muted" id="jd-comp-desc"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="success-modal">
+        <div class="modal">
+            <div class="modal-body">
+                <div class="success-popup">
+                    <div class="success-icon">🎉</div>
+                    <h3>Application Submitted!</h3>
+                    <p>Your application has been sent successfully. We'll notify you when the employer reviews it.</p>
+                    <div style="margin-top: 24px; display: flex; gap: 12px; justify-content: center;">
+                        <a href="applications.html" class="btn btn-primary">View Applications</a>
+                        <a href="jobs.html" class="btn btn-secondary">Browse More Jobs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/job-detail.js"></script>
+</body>
+</html>

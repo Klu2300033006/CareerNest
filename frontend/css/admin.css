@@ -1,0 +1,16 @@
+/* CareerNest — Admin Panel */
+.admin-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); margin-bottom: var(--space-8); }
+.admin-table-wrap { background: var(--surface-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
+.admin-table-header { display: flex; align-items: center; justify-content: space-between; padding: var(--space-5) var(--space-6); border-bottom: 1px solid var(--border-color); }
+.admin-table-header h3 { font-size: var(--text-base); font-weight: var(--weight-semibold); }
+.admin-table { width: 100%; border-collapse: collapse; }
+.admin-table th { padding: var(--space-3) var(--space-4); font-size: var(--text-xs); font-weight: var(--weight-semibold); color: var(--text-muted); text-align: left; text-transform: uppercase; letter-spacing: 0.05em; background: var(--surface-body); border-bottom: 1px solid var(--border-color); }
+.admin-table td { padding: var(--space-4); font-size: var(--text-sm); color: var(--text-secondary); border-bottom: 1px solid var(--border-light); }
+.admin-table tr:hover td { background: var(--gradient-card-hover); }
+.admin-table .actions { display: flex; gap: var(--space-2); }
+.admin-table .action-btn { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--surface-card); color: var(--text-muted); cursor: pointer; transition: all var(--duration-fast); font-size: var(--text-sm); }
+.admin-table .action-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.admin-table .action-btn.delete:hover { border-color: var(--color-danger); color: var(--color-danger); }
+.status-select { padding: 6px 10px; font-size: var(--text-xs); border: 1px solid var(--border-color); border-radius: var(--radius-sm); background: var(--surface-card); color: var(--text-primary); cursor: pointer; }
+@media (max-width: 1024px) { .admin-stats-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { .admin-stats-grid { grid-template-columns: 1fr; } .admin-table-wrap { overflow-x: auto; } }

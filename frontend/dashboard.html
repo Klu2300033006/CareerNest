@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — CareerNest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar scrolled">
+        <div class="navbar-inner">
+            <a href="index.html" class="navbar-logo"><span class="logo-icon">🪺</span> CareerNest</a>
+            <div class="navbar-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="applications.html">Applications</a>
+            </div>
+            <div class="navbar-actions">
+                <button class="btn btn-icon theme-toggle">🌙</button>
+                <div class="dropdown">
+                    <button class="avatar profile-trigger"><span class="user-avatar-text">?</span></button>
+                    <div class="dropdown-menu profile-dropdown">
+                        <div style="padding: 12px 14px; border-bottom: 1px solid var(--border-color);">
+                            <div class="font-semibold text-sm user-name">User</div>
+                            <div class="text-xs text-muted user-email">user@email.com</div>
+                        </div>
+                        <a href="dashboard.html" class="dropdown-item">📊 Dashboard</a>
+                        <a href="applications.html" class="dropdown-item">📋 Applications</a>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item" id="logout-btn">🚪 Sign Out</button>
+                    </div>
+                </div>
+                <button class="menu-toggle" onclick="document.getElementById('nav-links').classList.toggle('mobile-open'); this.classList.toggle('active');"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Menu</div>
+                    <a href="dashboard.html" class="sidebar-link active"><span class="link-icon">📊</span> Dashboard</a>
+                    <a href="jobs.html" class="sidebar-link"><span class="link-icon">💼</span> Browse Jobs</a>
+                    <a href="applications.html" class="sidebar-link"><span class="link-icon">📋</span> Applications</a>
+                </div>
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Account</div>
+                    <a href="#" class="sidebar-link"><span class="link-icon">👤</span> Profile</a>
+                    <a href="#" class="sidebar-link"><span class="link-icon">⚙️</span> Settings</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main -->
+        <main class="main-content">
+            <div class="welcome-banner">
+                <h2 class="welcome-title">Good Morning! 👋</h2>
+                <p class="welcome-subtitle">Monday, May 18, 2026</p>
+            </div>
+
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-icon blue">📄</div>
+                    <div class="stat-value" id="stat-total">0</div>
+                    <div class="stat-label">Total Applications</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon amber">⏳</div>
+                    <div class="stat-value" id="stat-pending">0</div>
+                    <div class="stat-label">Pending</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">✓</div>
+                    <div class="stat-value" id="stat-accepted">0</div>
+                    <div class="stat-label">Accepted</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red">✕</div>
+                    <div class="stat-value" id="stat-rejected">0</div>
+                    <div class="stat-label">Rejected</div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="section-card">
+                    <div class="section-card-header">
+                        <h3>Recent Applications</h3>
+                        <a href="applications.html" class="btn btn-ghost btn-sm">View All →</a>
+                    </div>
+                    <div class="section-card-body" id="recent-activity">
+                        <div class="empty-state" style="padding: 40px 20px;">
+                            <div class="empty-state-icon">📋</div>
+                            <div class="empty-state-title">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-card">
+                    <div class="section-card-header">
+                        <h3>Quick Actions</h3>
+                    </div>
+                    <div class="quick-actions">
+                        <a href="jobs.html" class="quick-action">
+                            <span class="quick-action-icon">🔍</span>
+                            <span class="quick-action-text">Browse Jobs</span>
+                        </a>
+                        <a href="applications.html" class="quick-action">
+                            <span class="quick-action-icon">📋</span>
+                            <span class="quick-action-text">My Applications</span>
+                        </a>
+                        <a href="#" class="quick-action">
+                            <span class="quick-action-icon">👤</span>
+                            <span class="quick-action-text">Edit Profile</span>
+                        </a>
+                        <a href="#" class="quick-action">
+                            <span class="quick-action-icon">❤️</span>
+                            <span class="quick-action-text">Saved Jobs</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

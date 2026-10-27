@@ -1,0 +1,165 @@
+/* ═══════════════════════════════════════════════════════
+   CareerNest — Dashboard Page
+   ═══════════════════════════════════════════════════════ */
+
+.welcome-banner {
+    background: var(--gradient-hero);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8) var(--space-10);
+    color: white;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: var(--space-8);
+}
+
+.welcome-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(99,102,241,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.welcome-title {
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-bold);
+    margin-bottom: var(--space-2);
+    position: relative;
+}
+
+.welcome-subtitle {
+    font-size: var(--text-sm);
+    color: rgba(255,255,255,0.6);
+    position: relative;
+}
+
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+}
+
+.stat-card .stat-icon.blue { background: var(--color-primary-light); }
+.stat-card .stat-icon.green { background: var(--color-success-bg); }
+.stat-card .stat-icon.amber { background: var(--color-warning-bg); }
+.stat-card .stat-icon.red { background: var(--color-danger-bg); }
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-6);
+}
+
+.section-card {
+    background: var(--surface-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.section-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-5) var(--space-6);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section-card-header h3 {
+    font-size: var(--text-base);
+    font-weight: var(--weight-semibold);
+}
+
+.section-card-body {
+    padding: var(--space-4) var(--space-6);
+}
+
+/* Recent Application Item */
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.activity-item:last-child { border-bottom: none; }
+
+.activity-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-md);
+    background: var(--color-primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-lg);
+    flex-shrink: 0;
+}
+
+.activity-info { flex: 1; }
+
+.activity-title {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--text-primary);
+}
+
+.activity-sub {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+/* Quick Action Cards */
+.quick-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    padding: var(--space-6);
+}
+
+.quick-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-6) var(--space-4);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-out);
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.quick-action:hover {
+    border-color: var(--color-primary);
+    background: var(--gradient-card-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.quick-action-icon {
+    font-size: 28px;
+}
+
+.quick-action-text {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+}
+
+@media (max-width: 1024px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .dashboard-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+    .stats-row { grid-template-columns: 1fr; }
+    .welcome-banner { padding: var(--space-6); }
+}

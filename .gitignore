@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual Environment
+venv/
+env/
+.env
+
+# Database
+*.sqlite3
+db.sqlite3
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Django
+*.log
+local_settings.py
+media/
+
+# Node (if added later)
+node_modules/
+package-lock.json
+
+# Byte-compiled
+*.pyc

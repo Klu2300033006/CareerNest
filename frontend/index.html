@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CareerNest — Your gateway to finding dream jobs. Browse thousands of opportunities from top companies.">
+    <title>CareerNest — Find Your Dream Career</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/landing.css">
+</head>
+<body class="hero-page">
+
+    <!-- ═══ Navbar ═══ -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="navbar-logo">
+                <span class="logo-icon">🪺</span>
+                CareerNest
+            </a>
+            <div class="navbar-links" id="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="dashboard.html" class="auth-only">Dashboard</a>
+                <a href="applications.html" class="auth-only">Applications</a>
+            </div>
+            <div class="navbar-actions">
+                <button class="btn btn-icon theme-toggle" title="Toggle theme">🌙</button>
+                <a href="login.html" class="btn btn-ghost guest-only">Sign In</a>
+                <a href="register.html" class="btn btn-primary btn-sm guest-only">Get Started</a>
+                <!-- Logged-in user dropdown -->
+                <div class="dropdown auth-only">
+                    <button class="avatar profile-trigger"><span class="user-avatar-text">?</span></button>
+                    <div class="dropdown-menu profile-dropdown">
+                        <div style="padding: 12px 14px; border-bottom: 1px solid var(--border-color);">
+                            <div class="font-semibold text-sm user-name">User</div>
+                            <div class="text-xs text-muted user-email">user@email.com</div>
+                        </div>
+                        <a href="dashboard.html" class="dropdown-item">📊 Dashboard</a>
+                        <a href="applications.html" class="dropdown-item">📋 Applications</a>
+                        <a href="admin-panel.html" class="dropdown-item">⚙️ Admin Panel</a>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item" id="logout-btn">🚪 Sign Out</button>
+                    </div>
+                </div>
+                <button class="menu-toggle" onclick="document.getElementById('nav-links').classList.toggle('mobile-open'); this.classList.toggle('active');">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══ Hero Section ═══ -->
+    <section class="hero">
+        <div class="container container-lg">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">✨ #1 Job Platform for Professionals</div>
+                    <h1 class="hero-title">
+                        Find Your Next<br>
+                        <span class="highlight">Dream Career</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Discover thousands of job opportunities from leading companies. Your next career move starts here with CareerNest.
+                    </p>
+                    <div class="hero-search">
+                        <input type="text" placeholder="Search job title, company, or keyword..." id="hero-search-input">
+                        <a href="jobs.html" class="btn btn-primary" id="hero-search-btn">Search Jobs</a>
+                    </div>
+                    <div class="hero-stats-row">
+                        <div class="hero-stat">
+                            <div class="hero-stat-value" id="hero-stat-jobs">0</div>
+                            <div class="hero-stat-label">Active Jobs</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value" id="hero-stat-companies">0</div>
+                            <div class="hero-stat-label">Companies</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value" id="hero-stat-users">0</div>
+                            <div class="hero-stat-label">Job Seekers</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-illustration">
+                        <!-- Floating glass cards -->
+                        <div class="hero-card-float card-1">
+                            <div class="float-card-icon">🎯</div>
+                            <div class="float-card-title">Frontend Developer</div>
+                            <div class="float-card-sub">TechNova · $120k - $160k</div>
+                        </div>
+                        <div class="hero-card-float card-2">
+                            <div class="float-card-icon">📊</div>
+                            <div class="float-card-title">Data Scientist</div>
+                            <div class="float-card-sub">DataFlow · $130k - $175k</div>
+                        </div>
+                        <div class="hero-card-float card-3">
+                            <div class="float-card-icon">🎨</div>
+                            <div class="float-card-title">UX Designer</div>
+                            <div class="float-card-sub">PixelCraft · $90k - $130k</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Stats Bar ═══ -->
+    <section class="stats-bar reveal">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stats-item">
+                    <div class="stats-number" id="stat-jobs">0</div>
+                    <div class="stats-text">Jobs Posted</div>
+                </div>
+                <div class="stats-item">
+                    <div class="stats-number" id="stat-companies">0</div>
+                    <div class="stats-text">Companies Hiring</div>
+                </div>
+                <div class="stats-item">
+                    <div class="stats-number" id="stat-categories">0</div>
+                    <div class="stats-text">Job Categories</div>
+                </div>
+                <div class="stats-item">
+                    <div class="stats-number" id="stat-applications">0</div>
+                    <div class="stats-text">Applications Sent</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Categories ═══ -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Explore</span>
+                <h2 class="section-title">Popular Job Categories</h2>
+                <p class="section-subtitle">Browse jobs by category and find the perfect role that matches your expertise.</p>
+            </div>
+            <div class="categories-grid" id="categories-grid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ How It Works ═══ -->
+    <section class="section" style="background: var(--surface-card);">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Process</span>
+                <h2 class="section-title">How CareerNest Works</h2>
+                <p class="section-subtitle">Three simple steps to land your dream job.</p>
+            </div>
+            <div class="steps-grid reveal">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4 class="step-title">Create Your Profile</h4>
+                    <p class="step-text">Sign up in seconds and build your professional profile to get noticed by top employers.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4 class="step-title">Browse & Apply</h4>
+                    <p class="step-text">Search through thousands of curated job listings and apply with a single click.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4 class="step-title">Get Hired</h4>
+                    <p class="step-text">Track your applications, get interview calls, and start your dream career.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Why CareerNest ═══ -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Benefits</span>
+                <h2 class="section-title">Why Choose CareerNest?</h2>
+                <p class="section-subtitle">We're more than just a job board — we're your career partner.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal delay-1">
+                    <div class="feature-icon">🚀</div>
+                    <h4 class="feature-title">Curated Listings</h4>
+                    <p class="feature-text">Every job is verified and curated. No spam, no scams — just real opportunities from real companies.</p>
+                </div>
+                <div class="feature-card reveal delay-2">
+                    <div class="feature-icon">⚡</div>
+                    <h4 class="feature-title">One-Click Apply</h4>
+                    <p class="feature-text">Upload your resume once and apply to multiple jobs instantly. We make applying effortless.</p>
+                </div>
+                <div class="feature-card reveal delay-3">
+                    <div class="feature-icon">📊</div>
+                    <h4 class="feature-title">Track Applications</h4>
+                    <p class="feature-text">Monitor every application in real-time. Know exactly where you stand with each company.</p>
+                </div>
+                <div class="feature-card reveal delay-4">
+                    <div class="feature-icon">🔔</div>
+                    <h4 class="feature-title">Smart Alerts</h4>
+                    <p class="feature-text">Get notified when new jobs match your profile. Never miss a perfect opportunity.</p>
+                </div>
+                <div class="feature-card reveal delay-5">
+                    <div class="feature-icon">🛡️</div>
+                    <h4 class="feature-title">Secure & Private</h4>
+                    <p class="feature-text">Your data is encrypted and never shared without your permission. Your privacy matters to us.</p>
+                </div>
+                <div class="feature-card reveal delay-6">
+                    <div class="feature-icon">🌍</div>
+                    <h4 class="feature-title">Remote Friendly</h4>
+                    <p class="feature-text">Find remote, hybrid, and on-site roles. Work from anywhere in the world with global listings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CTA Banner ═══ -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-banner reveal">
+                <h2 class="cta-title">Ready to Start Your Journey?</h2>
+                <p class="cta-text">Join thousands of professionals who found their dream careers through CareerNest.</p>
+                <div class="cta-actions">
+                    <a href="register.html" class="btn btn-primary btn-lg">Create Free Account</a>
+                    <a href="jobs.html" class="btn btn-outline btn-lg" style="color:white; border-color: rgba(255,255,255,0.3);">Browse Jobs</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Footer ═══ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="navbar-logo" style="color:white;">
+                        <span class="logo-icon">🪺</span>
+                        CareerNest
+                    </a>
+                    <p>Your trusted partner in building a successful career. Connecting top talent with leading companies worldwide.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Platform</h4>
+                    <ul class="footer-links">
+                        <li><a href="jobs.html">Browse Jobs</a></li>
+                        <li><a href="register.html">Create Account</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="applications.html">My Applications</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 CareerNest. All rights reserved.</span>
+                <div class="footer-socials">
+                    <a href="#" title="Twitter">𝕏</a>
+                    <a href="#" title="LinkedIn">in</a>
+                    <a href="#" title="GitHub">⌨</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Load landing page data
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Hero search redirect
+            document.getElementById('hero-search-btn').addEventListener('click', (e) => {
+                const q = document.getElementById('hero-search-input').value;
+                if (q) { e.preventDefault(); window.location.href = `jobs.html?search=${encodeURIComponent(q)}`; }
+            });
+
+            // Load public stats
+            try {
+                const stats = await api.request('/public-stats/', 'GET');
+                animateCounter(document.getElementById('hero-stat-jobs'), stats.total_jobs || 16);
+                animateCounter(document.getElementById('hero-stat-companies'), stats.total_companies || 8);
+                animateCounter(document.getElementById('hero-stat-users'), stats.total_applications || 250);
+                animateCounter(document.getElementById('stat-jobs'), stats.total_jobs || 16);
+                animateCounter(document.getElementById('stat-companies'), stats.total_companies || 8);
+                animateCounter(document.getElementById('stat-categories'), stats.total_categories || 8);
+                animateCounter(document.getElementById('stat-applications'), stats.total_applications || 250);
+            } catch {
+                // Fallback
+                animateCounter(document.getElementById('hero-stat-jobs'), 16);
+                animateCounter(document.getElementById('hero-stat-companies'), 8);
+                animateCounter(document.getElementById('hero-stat-users'), 250);
+                animateCounter(document.getElementById('stat-jobs'), 16);
+                animateCounter(document.getElementById('stat-companies'), 8);
+                animateCounter(document.getElementById('stat-categories'), 8);
+                animateCounter(document.getElementById('stat-applications'), 250);
+            }
+
+            // Load categories
+            try {
+                const cats = await api.request('/categories/', 'GET');
+                const grid = document.getElementById('categories-grid');
+                if (grid && cats.length) {
+                    grid.innerHTML = cats.slice(0, 8).map((cat, i) => `
+                        <div class="category-card reveal delay-${i % 6 + 1}" onclick="window.location.href='jobs.html?category=${cat.id}'">
+                            <div class="category-icon">${cat.icon || '💼'}</div>
+                            <div class="category-name">${cat.name}</div>
+                            <div class="category-count">${cat.job_count || 0} jobs</div>
+                        </div>
+                    `).join('');
+                    initScrollReveal();
+                }
+            } catch { /* categories will be empty */ }
+        });
+    </script>
+</body>
+</html>
